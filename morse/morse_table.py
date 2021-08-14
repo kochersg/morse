@@ -3,10 +3,12 @@ class CMorseTable():
         self.table = self.fill_table()
 
     def __str__(self):
-        print('Available letters in Morse table:')
-        print('---------------------------------')
+        outstr=''
+        outstr+='Available letters in Morse table:\n'
+        outstr+='---------------------------------\n'
         for letter in self.table:
-            print(letter+": "+self.table[letter])
+            outstr+=letter+": "+self.table[letter]+'\n'
+        return outstr
             
 
     @staticmethod
