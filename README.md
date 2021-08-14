@@ -34,5 +34,18 @@ Wenn Du Änderungen gemacht hast, dann kannst Du sie mit
 
 einchecken und kommentieren.
 
+### Dateien in ein Repository aufnehmen
+Wenn Du eine neue Datei anlegst und später einchecken möchtest, dann musst Du sie ersmal mit 
+
+`git add .\pfad\datei.ext`
+
+hinzufügen. ".\pfad" ist natürlich der Unterordner und "datei.ext" muss durch den echten Dateinamen ersetzt werden.
+
+### Dateien nach github schieben (push)
+Wenn Du etwas mit mir teilen möchtest, dann verwendest Du folgendes Kommando:
+
+`git push origin main`
+
+
 
 
