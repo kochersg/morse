@@ -13,7 +13,7 @@ Falls Da das Projekt noch einmal komplett neu von github ziehen möchtest, dann 
 
 `git clone https://www.github.com/kochersg/morse`
 
-Das ist noch nötig, wenn Du das Projekt schon in einem Ordner hast. Aber falls z.B. noch jemand mitmachen möchte, dann kann er/sie das so von github ziehen.
+Das ist nicht nötig, wenn Du das Projekt schon in einem Ordner hast. Aber falls z.B. noch jemand mitmachen möchte, dann kann er/sie das so von github ziehen.
 
 ### Einen aktuellen Stand von github ziehen (pull)
 Für den Fall, dass Du den Stamm des Projektes ziehen möchtest, dann verwende folgendes:
