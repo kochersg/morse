@@ -60,19 +60,36 @@ class CMySound():
         export_file: str, optional
             URL-string to export wave file for the generated beep
         """
+        # number of bytes per sample
+        n_bytes=2
+        # number of audio channels
+        n_channels=1
+        # Calculate the number of samples that the wave file will contain. It needs to be an integer number.
         n_samples = int(self.sampling_rate_hertz*duration_seconds)
+        # generate a numpy array from 0...n_samples-1 (n_samples values)
         x=np.arange(n_samples)
-        y=32767.0*np.sin(2.0*np.pi*self.freq_hertz*x/self.sampling_rate_hertz)
+        # max amplitude is given by n_bytes. We have 8bit per byte (16bit for 2byte)
+        max_amplitude=2**(8*n_bytes-1)-1
+        # calculate the sine-function of the audio wave
+        y=max_amplitude*np.sin(2.0*np.pi*self.freq_hertz*x/self.sampling_rate_hertz)
+        # convert y into 16bit integer array
         y=np.int16(y)
-        frames = struct.pack('={}h'.format(len(y)),*y)
-        frames+= struct.pack('={}h'.format(len(y)),*y)
+        # Create an bytearray with all the values aligned in correct by order
+        for channel in range(n_channels):
+            if channel==0:
+                frames = struct.pack('={}h'.format(len(y)),*y)
+            else:
+                frames = struct.pack('={}h'.format(len(y)),*y)
+        # Write wave file
         with wave.open(export_file,'w') as fh:
             # setparams uses the following parameter:
-            # n_channels: Number of sound channels. I use the value 2 (Stereo).
+            # n_channels: Number of sound channels. I use the value 1 (Mono).
             # sampling_width: number of bytes used to store one value. I use the value 2 (16bit)
             # sampling_rate
             # n_samples: number of samples (duration * sampling_rate_hertz)
-            fh.setparams((2,2,self.sampling_rate_hertz,n_samples,'NONE','not compressed'))
+            # the parameters 'None' and 'not compressed' need to be set
+            # see also https://docs.python.org/3/library/wave.html
+            fh.setparams((n_channels,n_bytes,self.sampling_rate_hertz,n_samples,'NONE','not compressed'))
             fh.writeframesraw(frames)
 
 if __name__=='__main__':
