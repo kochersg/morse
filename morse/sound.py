@@ -2,6 +2,9 @@ import struct
 import numpy as np
 #from scipy import signal as sg
 import wave
+from pydub import AudioSegment
+from pydub.playback import play
+import time
 
 class CMySound():
     """
@@ -21,6 +24,10 @@ class CMySound():
         Duration of the short beep in seconds. Default: 0.1s
     duration_long_seconds:float
         Duration of the long beep in seconds. Default: 0.3s
+    dit:
+        AudioSegment containing the morse dit sound
+    dah:
+        AudioSegment containint the morse dah sound
         
     Methods
     -------
@@ -45,8 +52,10 @@ class CMySound():
         self.export_file_long_beep=export_file_long_beep
         self.freq_hertz=440.0
         self.sampling_rate_hertz=44100.0
-        self.duration_short_seconds=.1
-        self.duration_long_seconds=.3
+        self.duration_short_seconds=.05
+        self.duration_long_seconds=.15
+        self.dit=self.load_beep_as_AudioSegment(self.export_file_short_beep)
+        self.dah=self.load_beep_as_AudioSegment(self.export_file_long_beep)
 
     def generate_beep(self,duration_seconds:float=1, export_file:str='./static/sound/beeps.wav'):
         """
@@ -92,7 +101,42 @@ class CMySound():
             fh.setparams((n_channels,n_bytes,self.sampling_rate_hertz,n_samples,'NONE','not compressed'))
             fh.writeframesraw(frames)
 
+    @staticmethod 
+    def load_beep_as_AudioSegment(file_str:str):
+        """
+        Use pydub module to load wav-file as AudioSegment
+
+        Parameters
+        ----------
+        file_str:
+            URL to wav-file
+
+        Returns
+        -------
+        AudioSegment containing the wav-sounds
+        """
+        wav_seg=AudioSegment.from_file(file_str, format='wav')
+        return(wav_seg)
+
 if __name__=='__main__':
     ms=CMySound()
-    ms.generate_beep(duration_seconds=ms.duration_short_seconds, export_file=ms.export_file_short_beep)
-    ms.generate_beep(duration_seconds=ms.duration_long_seconds, export_file=ms.export_file_long_beep)
+    # ms.generate_beep(duration_seconds=ms.duration_short_seconds, export_file=ms.export_file_short_beep)
+    # ms.generate_beep(duration_seconds=ms.duration_long_seconds, export_file=ms.export_file_long_beep)
+    play(ms.dit)
+    time.sleep(0.001)
+    play(ms.dit)
+    time.sleep(0.001)
+    play(ms.dit)
+    time.sleep(0.001)
+    play(ms.dah)
+    time.sleep(0.001)
+    play(ms.dah)
+    time.sleep(0.001)
+    play(ms.dah)
+    time.sleep(0.001)
+    play(ms.dit)
+    time.sleep(0.001)
+    play(ms.dit)
+    time.sleep(0.001)
+    play(ms.dit)
+    time.sleep(0.001)
