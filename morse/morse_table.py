@@ -52,6 +52,7 @@ class CMorseTable():
             'c': '-.-.',
             'd': '-..',
             'e': '.',
+            'f': '..-.',
         }
 
 # Dieser Teil des Codes könnte man ausführen, wenn man die Datei morse_table.py direkt mit Python ausführen würde. 
