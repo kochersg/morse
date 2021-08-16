@@ -46,6 +46,34 @@ Wenn Du etwas mit mir teilen möchtest, dann verwendest Du folgendes Kommando:
 
 `git push origin main`
 
+## Umgang mit externen Modulen (requirements.txt)
+Für die Erzeugung der Beep-Töne benötigen wir andere Python Module wie z.B. `numpy` oder `wave`. Diese Module müssen getrennt 
+installiert werden. Wir haben Dir hierfür mit `virtualenv` eine virtuelle Python-Umgebung angelegt. Im Visual Studio Code 
+ist diese Umgebung normalerweise aktiviert (siehe in der Statusleiste links unten). Wenn Du Python-Kommandos direkt im 
+Terminal ausführen möchtest, solltest Du diese virtuelle Python-Umgebung erst im Terminal aktivieren:
+
+`source activate ./myenv/bin/activate` (Linux, Mac OS)
+
+oder 
+
+`.\myenv\Scripts\activate.bat` (Windows)
+
+Dann wird die virtuelle Umgebung verwendet und nicht Deine Haupt-Python-Installation. Damit werden zusätzliche Module nur 
+hier installiert und man hält sich die Hauptinstallation sauber. Man kann die benötigten Module entweder manuell mit 
+
+`python -m pip install der_modul_name`
+
+installieren oder alle nötigen Module einmal aus der Datei `requirements.txt`, die die Abhängigkeiten enthält. Für die Installation 
+aller Module auf einmal verwendet man das Kommando:
+
+`python -m pip install -r requirements.txt`
+
+### Erzeugung der Datei requirements.txt
+Die Datei kann man automatisch aus der virtuellen Python-Umgebung erzeugen. Hierzu muss vorher auf jeden Fall die virtuelle Umgebung 
+aktiviert werden (siehe oben). Dann wird die Datei `requirements.txt` über folgendes Kommando erzeugt:
+
+`python -m pip freeze > requirements.txt`
+
 
 
 
