@@ -11,4 +11,7 @@ if __name__=='__main__':
     mt = CMorseTable()
 
    # Hier geben wir Informationen zur Klasse aus. Diese werden in der Funktion CMorseTable.__str__() erzeugt, die wir nach unseren Bedürfnissen anpassen können.
-    print(mt)
+    #print(mt)
+
+    translation=mt.text_to_morse(text_to_translate="Wir wuenschen allen einen schoenen Abend")
+    print(translation)

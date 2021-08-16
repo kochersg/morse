@@ -35,7 +35,13 @@ class CMorseTable():
         for letter in self.table:
             outstr+=letter+": "+self.table[letter]+'\n'
         return outstr
-            
+    
+    def text_to_morse(self, text_to_translate:str="Hallo Welt"):
+        out_str=''
+        for letter in text_to_translate:
+            out_str+=self.table[letter.lower()]
+            out_str+=' '
+        return out_str
 
     @staticmethod
     def fill_table():
@@ -73,6 +79,7 @@ class CMorseTable():
             'x': '-..-',
             'y': '-.--',
             'z': '--..',
+            ' ': '   ',
         }
 
 # Dieser Teil des Codes könnte man ausführen, wenn man die Datei morse_table.py direkt mit Python ausführen würde. 
