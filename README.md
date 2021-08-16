@@ -7,7 +7,7 @@ I found the basic idea on https://bmu-verlag.de/programmierideen-vorschlaege-fue
 ## Morse-Table
 We are going to use this Table: https://de.wikipedia.org/wiki/Morsecode#Standard-Codetabelle
 
-## Kurze git Anleitung für Malte
+## Kurze git Anleitung für Einsteiger
 ### Das Projekt "clonen"
 Falls Da das Projekt noch einmal komplett neu von github ziehen möchtest, dann funktioniert das über:
 
