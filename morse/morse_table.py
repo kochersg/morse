@@ -37,6 +37,18 @@ class CMorseTable():
         return outstr
     
     def text_to_morse(self, text_to_translate:str="Hallo Welt"):
+        """
+        Translate a text string into a morse code string
+
+        Parameters
+        ----------
+        text_to_translate:str, optional
+            String of text to be translated. Default: "Hallo Welt"
+
+        Returns
+        -------
+        Output string with morse -. symbols
+        """
         out_str=''
         for letter in text_to_translate:
             out_str+=self.table[letter.lower()]
